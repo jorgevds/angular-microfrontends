@@ -1,0 +1,112 @@
+{
+    "projectType": "application",
+    "sourceRoot": "apps/nasa/src",
+    "prefix": "nasa",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/angular:webpack-browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/nasa",
+                "index": "apps/nasa/src/index.html",
+                "main": "apps/nasa/src/main.ts",
+                "polyfills": "apps/nasa/src/polyfills.ts",
+                "tsConfig": "apps/nasa/tsconfig.app.json",
+                "assets": ["apps/nasa/src/favicon.ico", "apps/nasa/src/assets"],
+                "styles": ["apps/nasa/src/styles.css"],
+                "scripts": [],
+                "customWebpackConfig": {
+                    "path": "apps/nasa/webpack.config.js"
+                }
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/nasa/src/environments/environment.ts",
+                            "with": "apps/nasa/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all",
+                    "customWebpackConfig": {
+                        "path": "apps/nasa/webpack.prod.config.js"
+                    }
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@nrwl/angular:webpack-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "nasa:build:production"
+                },
+                "development": {
+                    "browserTarget": "nasa:build:development"
+                }
+            },
+            "defaultConfiguration": "development",
+            "options": {
+                "port": 4202,
+                "publicHost": "http://localhost:4202"
+            }
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "nasa:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["apps/nasa/**/*.ts", "apps/nasa/**/*.html"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/nasa"],
+            "options": {
+                "jestConfig": "apps/nasa/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "serve-static": {
+            "executor": "@nrwl/angular:file-server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "nasa:build",
+                "port": 4203
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "nasa:build:development"
+                },
+                "production": {
+                    "buildTarget": "nasa:build:production"
+                }
+            }
+        }
+    },
+    "tags": []
+}

@@ -1,0 +1,10 @@
+@import 'tailwindcss/tailwind.css';
+
+.form * {
+  margin: 6px 0;
+  padding: 0 6px;
+}
+
+.form label {
+  padding: 0;
+}

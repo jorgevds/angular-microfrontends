@@ -1,0 +1,14 @@
+<div class="header-dropdown">
+    <p>{{ currentUser }}</p>
+
+    <button (click)="toggleDropdown()">
+        <img src="../../../../assets/chevrons/down.svg" />
+    </button>
+
+    <div *ngIf="dropdownOpen" class="header-dropdown__open">
+        <a routerLink="./overview">
+            <p>Bewerk gegevens</p>
+        </a>
+        <p (click)="signOut()">Afmelden</p>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+/* 
+Google icons
+class: .material-symbols-outlined
+*/
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0");
+
+/* override */
+.material-symbols-outlined {
+  font-size: 36px;
+}
+
+:host {
+  z-index: 999999;
+}
+
+.remote-menu {
+  height: 100%;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.remote-menu.toggled {
+  position: absolute;
+  height: 100%;
+  transform: translateX(-90%);
+  transition: all 0.2s ease;
+}
+
+.navbar-toggle {
+  /* override default button style */
+  background: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+  position: absolute;
+  top: 12px;
+  right: -20px;
+  line-height: 0;
+  padding: 4px;
+  border: black 1px solid;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.navbar-toggle  .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.navbar-toggle:hover {
+  background-color: black;
+  color: white;
+}
+
+.navbar-toggle.toggled:hover {
+  transition: all 0.2s ease;
+  padding-right: 12px;
+  padding-left: 12px;
+  right: -36px;
+}
+
+.remote-menu ul {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  list-style: none;
+  margin: 0; 
+  margin-bottom: 12px; 
+  padding: 12px;
+  background-color: burlywood;
+}
+
+.remote-menu ul li {
+  margin: auto;
+}
+
+.remote-menu ul li a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.2s ease;
+}
+.remote-menu ul li a:hover {
+  text-decoration: none;
+  color: grey;
+  transition: color 0.2s ease;
+}

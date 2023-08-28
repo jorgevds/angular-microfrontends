@@ -1,0 +1,55 @@
+<article *ngIf="pod$ | async as pod">
+    <h1 class="text-3xl">
+        {{ pod.title }}
+    </h1>
+    <h2 class="text-xl mb-4">
+        {{ pod.date | date: "longDate" }}
+    </h2>
+    <section class="flex justify-between">
+        <p class="w-3/5 pr-4">
+            {{ pod.explanation }}
+        </p>
+
+        <section class="w-2/5">
+            <ngx-skeleton-loader
+                [ngClass]="(imageLoaded$ | async) ? 'hidden' : ''"
+                count="1"
+                appearance="circle"
+                [theme]="{ height: '100%', width: '100%', borderRadius: '0' }"
+            >
+            </ngx-skeleton-loader>
+            <img
+                src="{{ pod.url }}"
+                (click)="openModal()"
+                (load)="imageLoaded($event)"
+                title="Click me to see me in more detail!"
+                class="hover:scale-105 transition-all cursor-zoom-in"
+                [ngClass]="(imageLoaded$ | async) ? '' : 'hidden'"
+            />
+        </section>
+    </section>
+    <app-modal #modal img="{{ pod.url }}"> </app-modal>
+
+    <nav class="flex justify-between pt-12">
+        <div *ngIf="previousDate$ | async as previousDate">
+            <a
+                routerLink="../{{ previousDate }}"
+                class="hover:underline hover:text-gray-600"
+            >
+                Previous:
+                <span> {{ previousDate | date: "longDate" }} </span>
+            </a>
+        </div>
+        <ng-container *ngIf="(isTomorrow$ | async) === false">
+            <div *ngIf="nextDate$ | async as nextDate">
+                <a
+                    routerLink="../{{ nextDate }}"
+                    class="hover:underline hover:text-gray-600"
+                >
+                    Next:
+                    <span> {{ nextDate | date: "longDate" }} </span>
+                </a>
+            </div>
+        </ng-container>
+    </nav>
+</article>

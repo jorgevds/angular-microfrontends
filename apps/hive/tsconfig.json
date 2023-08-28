@@ -1,0 +1,39 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        },
+        {
+            "path": "./tsconfig.editor.json"
+        }
+    ],
+    "compilerOptions": {
+      "baseUrl": "src",
+      "paths": {
+        "@common/*": ["common/*"],
+        "@hive/*": ["modules/hive/*"],
+        "@shared/*": ["modules/shared/*"],
+        "@admin/*": ["modules/admin/*"],
+        "@store": ["../../../libs/store/src/index.ts"]
+      },
+      "target": "es2020",
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noImplicitOverride": true,
+      "noPropertyAccessFromIndexSignature": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
+    }
+}

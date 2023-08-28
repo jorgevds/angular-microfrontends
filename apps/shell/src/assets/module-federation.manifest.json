@@ -1,0 +1,6 @@
+{
+    "login": "http://localhost:4201",
+    "nasa": "http://localhost:4202",
+    "hive": "http://localhost:4203",
+    "props": "http://localhost:4204"
+}

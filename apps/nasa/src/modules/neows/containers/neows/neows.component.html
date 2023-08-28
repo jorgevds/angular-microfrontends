@@ -1,0 +1,38 @@
+<article>
+    <section>
+        <h1 class="text-3xl">NeoWs</h1>
+        <h2 class="text-2xl mb-4">Near Earth Object Web Service</h2>
+        <p class="mb-4">
+            Select a new start or end date for a different range of entries.
+        </p>
+    </section>
+    <ng-container *ngIf="cometoid$ | async as cometoidMap; else skeleton">
+        <section *ngFor="let cometoid of cometoidMap | keyvalue">
+            <h3>
+                {{ cometoid.key | date }}
+            </h3>
+            <ul class="pt-2 pb-4">
+                <li *ngFor="let value of cometoid.value" class="pl-4 pb-2">
+                    <a
+                        routerLink="./detail/{{ value.id }}"
+                        class="hover:underline hover:text-gray-600"
+                    >
+                        {{ value.name }} : {{ value.id }}
+                        &nbsp; =>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </ng-container>
+    <ng-template #skeleton>
+        <ngx-skeleton-loader
+            count="8"
+            appearance="line"
+            [theme]="{ width: '80%' }"
+        ></ngx-skeleton-loader>
+    </ng-template>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    <ng-container [formGroup]="datesForm">
+        <app-date-form formGroupName="formFields"></app-date-form>
+    </ng-container>
+</article>

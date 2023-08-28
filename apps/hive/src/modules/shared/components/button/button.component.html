@@ -1,0 +1,10 @@
+<button
+    type="button"
+    class="{{'hive-button hive-button--' + type}}"
+>
+    <ng-content></ng-content>
+    <img
+        *ngIf="iconName"
+        [src]="'/assets/icons/' + iconName + '.svg'"
+    >
+</button>

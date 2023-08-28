@@ -1,0 +1,43 @@
+<application-header></application-header>
+
+<div class="hive-admin">
+    <div class="hive-admin-header">
+        <div class="hive-admin-header__title">
+            <app-button
+                type="secondary"
+                iconName="arrow-left"
+                (click)="navigateBack()"
+            >
+            </app-button>
+            <h1>Employbees</h1>
+        </div>
+        <app-button
+            type="primary"
+            (click)="openCreateEmployeeForm()"
+        >
+            Employee toevoegen
+        </app-button>
+    </div>
+
+    <table class="hive-admin-table">
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.name}}</td>
+                <td>{{employee.jobTitle}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.phone}}</td>
+                <td>
+                    <app-button
+                        type="icon"
+                        iconName="edit"
+                    ></app-button>
+                    <app-button
+                        type="icon"
+                        iconName="delete"
+                    ></app-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

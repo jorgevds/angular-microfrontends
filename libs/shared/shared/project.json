@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/shared/shared/src",
+    "prefix": "micro-frontends",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/shared/shared"],
+            "options": {
+                "jestConfig": "libs/shared/shared/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/shared/shared/**/*.ts",
+                    "libs/shared/shared/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

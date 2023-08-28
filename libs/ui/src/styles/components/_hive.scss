@@ -1,0 +1,170 @@
+$block-size: 70; //Change this value
+$scrollbar-size: 13;
+$gap: 6;
+
+$grid-cell-height: ($block-size * 2) * 80 /100 + px;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=IBM+Plex+Serif:wght@700&display=swap');
+
+.hive-grid {
+  display: grid;
+  width: auto;
+  justify-content: center;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fit, $block-size + px);
+  grid-template-rows: repeat(auto-fit, minmax($grid-cell-height, $grid-cell-height));
+  grid-auto-rows: $grid-cell-height;
+  margin-bottom: ($block-size * 2) * 30 /100 + px;
+  row-gap: $gap + px;
+  column-gap: 0px;
+}
+
+.hive-grid__backdrop {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+}
+
+.hive-grid__item__image {
+  -webkit-clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+
+  filter: brightness(0.5);
+  cursor: pointer;
+}
+
+.hive-grid__item-wrapper {
+  position: relative;
+  height: 2 * $block-size + px;
+  grid-column: 2 span;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // -webkit-clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  // clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
+
+.hive-grid__item {
+  -webkit-clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  transition: clip-path 300ms, background-color 300ms, transform 300ms ease-in-out;
+  height: 140px;
+
+  &:hover,
+  &.hive-grid__item--active {
+    .hive-grid__item__image {
+      filter: brightness(1);
+      transform: scale(0.95);
+      box-shadow: inset 0 0 $block-size + px ($block-size/2) + px #ff9a0073;
+    }
+    transform: scale(1.4);
+    position: absolute;
+    z-index: 12;
+    background-color: gold;
+    box-shadow: inset 0 0 $block-size + px ($block-size/2) + px #ff9a0073;
+  }
+}
+
+.hive-grid__item-wrapper-active,
+.hive-grid__item-wrapper:hover {
+  z-index: 10;
+}
+
+.hive-grid__item__dialog[open] {
+  opacity: 1.0;
+
+  transition: opacity 300ms;
+}
+
+.hive-grid__item__dialog {
+  position: relative;
+  top: 0;
+  left: 100px;
+  padding: 19px 35px 19px 97px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 0px 24px 24px 24px;
+  z-index: 11;
+  opacity: 0.0;
+
+  h2 {
+    font-family: 'IBM Plex Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+
+    color: #343434;
+
+    margin: 4px 0px;
+  }
+
+  .hive-grid__item__job-title {
+    font-family: 'IBM Plex Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    color: #343434;
+    margin: 4px 0px;
+  }
+
+  p {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #343434;
+    margin: 0px 0px;
+
+    a {
+      text-decoration: none;
+      color: #343434;
+      cursor: pointer;
+    }
+  }
+}
+
+.hive-grid__item__button {
+  position: relative;
+  white-space: nowrap;
+  top: 13px;
+  left: 200px;
+  z-index: 11;
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: #343434;
+}
+
+@media screen and (max-width: #{3 * $block-size - 1 + $scrollbar-size}px) {
+  .hive-grid {
+    grid-template-columns: repeat(auto-fit, $block-size + px);
+    grid-template-rows: ($block-size * 2) + px;
+    grid-auto-rows: ($block-size * 2) + px;
+    margin-bottom: ($block-size * 2) * 30 /100 + px;
+  }
+  .hive-grid__item {
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
+  }
+}
+
+@for $i from ($block-size * 3) through 2000 {
+  @if ($i % $block-size == 0) {
+    $counter: $i / $block-size;
+    @media screen and (min-width: #{($counter) * ($block-size + $gap) + 160 + $scrollbar-size}px) and (max-width: #{($counter + 1) * ($block-size + $gap) - 1 + 160 + $scrollbar-size}px) {
+      $first: floor($counter / 2) + 1;
+      .hive-grid__item-wrapper:nth-child(#{$first}),
+      .hive-grid__item-wrapper:nth-child(#{$counter - 1}n + #{$counter + $first - 1}) {
+        grid-column: 2 / span 2;
+      }
+    }
+  }
+}

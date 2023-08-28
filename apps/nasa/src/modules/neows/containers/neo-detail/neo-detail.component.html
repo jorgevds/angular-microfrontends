@@ -1,0 +1,93 @@
+<button (click)="goBack()" class="text-sm hover:underline hover:text-gray-600">
+    Back to overview
+</button>
+<article *ngIf="comet$ | async as comet">
+    <section>
+        <h1 class="text-3xl">Designation: {{ comet.name }}</h1>
+        <h2 class="text-xl mb-4">
+            Orbit:
+            {{ comet.orbital_data?.orbit_class?.orbit_class_description }}
+        </h2>
+    </section>
+    <section class="pb-4">
+        <p>Id: {{ comet.id }}</p>
+        <p>
+            First spotted:
+            {{ comet.orbital_data?.first_observation_date | date }}
+        </p>
+    </section>
+
+    <section>
+        <h3 class="text-lg">Estimated diameter</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th blank></th>
+                    <th>Kilometers</th>
+
+                    <th>Miles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Min</th>
+                    <td>
+                        {{
+                            comet.estimated_diameter.kilometers
+                                .estimated_diameter_min
+                        }}
+                    </td>
+                    <td>
+                        {{
+                            comet.estimated_diameter.miles
+                                .estimated_diameter_min
+                        }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Max</th>
+                    <td>
+                        {{
+                            comet.estimated_diameter.kilometers
+                                .estimated_diameter_max
+                        }}
+                    </td>
+                    <td>
+                        {{
+                            comet.estimated_diameter.miles
+                                .estimated_diameter_max
+                        }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="dangerous-comet pt-4 pb-8">
+        <p>Dangerous comet: &nbsp;</p>
+        <p
+            *ngIf="
+                comet.is_potentially_hazardous_asteroid.toString() === 'false';
+                else unsafe
+            "
+        >
+            No
+        </p>
+        <ng-template #unsafe><span class="text-red-600">Yes</span></ng-template>
+    </section>
+    <section class="pb-4">
+        <h3 class="text-xl mb-4">Near misses</h3>
+        <div
+            *ngFor="let close of comet.close_approach_data"
+            class="close-approach-data"
+        >
+            {{ close.close_approach_date | date }}: missed
+            {{ close.orbiting_body }} by
+            {{ close.miss_distance.kilometers | number }}km at
+            {{ close.relative_velocity.kilometers_per_hour | number }}kmph
+        </div>
+    </section>
+    <button (click)="goBack()" class="hover:underline hover:text-gray-600">
+        Back to overview
+    </button>
+</article>

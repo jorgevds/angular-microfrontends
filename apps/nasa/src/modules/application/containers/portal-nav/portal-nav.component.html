@@ -1,0 +1,35 @@
+<nav *ngIf="APODImgSrc$ | async as APODImg; else skeleton">
+    <a routerLink="./apod">
+        <section class="image-wrapper">
+            <img
+                src="{{ APODImg }}"
+                alt="Portal image to Astronomic Picture of the Day"
+                width="500"
+                height="500"
+            />
+            <h1 class="portal-title">Astronomy Picture of the Day</h1>
+        </section>
+    </a>
+    <a routerLink="./neows">
+        <section class="image-wrapper">
+            <img
+                src="{{ NeoImgSrc }}"
+                alt="Portal image to Near Earth Object Watcher"
+                width="500"
+                height="500"
+            />
+            <h1 class="portal-title">Near Earth Object Web Service</h1>
+        </section>
+    </a>
+</nav>
+<ng-template #skeleton>
+    <ngx-skeleton-loader
+        count="1"
+        appearance="line"
+        [theme]="{
+            height: '500px',
+            width: '80%',
+            margin: '0 10%'
+        }"
+    ></ngx-skeleton-loader>
+</ng-template>

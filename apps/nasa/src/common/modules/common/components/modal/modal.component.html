@@ -1,0 +1,11 @@
+<article
+    #modalComponent
+    class="absolute top-0 bottom-0 left-0 right-0 bg-black/80"
+    *ngIf="modalOpen"
+>
+    <section class="content" (click)="toggle()">
+        <div class="img-wrapper">
+            <img src="{{ img }}" (click)="toggle()" />
+        </div>
+    </section>
+</article>

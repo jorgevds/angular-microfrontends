@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  min-height: 100vh;
+}
+
+.hive-login__wrapper {
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-direction: column;
+
+}
+
+.hive-login__background-wrapper {
+    position: absolute;
+    max-height: 95%;
+    max-width: 100%;
+    top: 50%;
+    left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.hive-login__column {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  max-width: 30%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: "Barlow";
+  font-size: 14px;
+  .title {
+    font-family: "IBM Plex Serif";
+    font-size: 44px;
+  }
+
+  .hive-login__button {
+    button {
+      background-color: #FAD018;
+      border-radius: 36px;
+      height: 41px;
+      border: unset;
+    }
+  }
+}

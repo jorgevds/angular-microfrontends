@@ -1,0 +1,41 @@
+nav {
+  @apply flex justify-evenly items-center;
+}
+
+a {
+  color: black;
+  @apply no-underline;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px;
+  overflow: hidden;
+
+  @apply shadow shadow-nebula-400/30 transition-shadow duration-300;
+}
+
+.image-wrapper:hover {
+  @apply shadow-md shadow-nebula-400/30 transition-shadow duration-300;
+}
+
+img {
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+  transition: transform 0.3s;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+.portal-title {
+  font-size: 1.1rem;
+  font-weight: normal;
+  padding: 24px 12px;
+  margin: 0;
+  text-align: center;
+  z-index: 10;
+  background-color: white; 
+}

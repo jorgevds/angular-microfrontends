@@ -1,0 +1,16 @@
+@import 'tailwindcss/tailwind.css';
+table {
+  width: 33%;
+}
+th {
+  background-color: whitesmoke;
+}
+td {
+  text-align: center;
+}
+.dangerous-comet {
+  display: flex;
+}
+.close-approach-data {
+  padding-bottom: 1rem;
+}

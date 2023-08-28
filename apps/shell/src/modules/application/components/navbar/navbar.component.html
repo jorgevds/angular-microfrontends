@@ -1,0 +1,31 @@
+<nav class="remote-menu" id="navbar">
+    <button class="navbar-toggle" (click)="toggleButton()" id="toggle-btn">
+        <ng-container *ngIf="navbarToggled$ | async; else openNavbar">
+            <span class="material-symbols-outlined"> chevron_right </span>
+        </ng-container>
+    </button>
+    <ul>
+        <li>
+            <a routerLink="/"
+                ><span class="material-symbols-outlined"> home </span></a
+            >
+        </li>
+        <li>
+            <a routerLink="nasa"
+                ><span class="material-symbols-outlined"> public </span></a
+            >
+        </li>
+        <li>
+            <a routerLink="hive"
+                ><span class="material-symbols-outlined">
+                    emoji_nature
+                </span></a
+            >
+        </li>
+        <li><a routerLink="login">Login</a></li>
+    </ul>
+</nav>
+
+<ng-template #openNavbar>
+    <span class="material-symbols-outlined"> chevron_left </span>
+</ng-template>

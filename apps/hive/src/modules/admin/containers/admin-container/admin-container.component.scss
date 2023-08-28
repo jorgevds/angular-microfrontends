@@ -1,0 +1,39 @@
+.hive-admin {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.hive-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hive-admin-header__title {
+  display: flex;
+  align-items: center;
+
+  font-family: "IBM Plex Serif";
+  font-style: normal;
+
+  line-height: 36px;
+
+  app-button {
+    margin-right: 1rem;
+  }
+}
+
+.hive-admin-table {
+  width: 100%;
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  tr {
+    border-bottom: 1px solid #d6d6d6;
+  }
+  td {
+    padding: 1rem;
+  }
+}

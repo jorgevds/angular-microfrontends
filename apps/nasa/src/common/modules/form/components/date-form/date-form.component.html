@@ -1,0 +1,26 @@
+<form class="flex mt-6" [formGroup]="form">
+    <div
+        class="flex flex-col border border-zinc-100 rounded-md py-4 px-2 w-3/12"
+    >
+        <label class="text-lg" for="start_date">Start date</label>
+        <input
+            type="date"
+            id="start_date"
+            name="start_date"
+            formControlName="start_date"
+            max="{{ this.FormService.today }}"
+            class="mb-2"
+        />
+
+        <label class="text-lg" for="end_date">End date</label>
+        <input
+            type="date"
+            id="end_date"
+            name="end_date"
+            formControlName="end_date"
+            max="{{ this.FormService.today }}"
+            [attr.disabled]="true"
+            class="mb-2"
+        />
+    </div>
+</form>

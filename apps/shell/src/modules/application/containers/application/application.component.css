@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  height: 100%;
+}
+
+.micro-frontend-wrapper {
+  overflow: auto;
+  width: 100%;
+}

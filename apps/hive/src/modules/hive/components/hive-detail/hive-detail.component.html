@@ -1,0 +1,19 @@
+<div class="hive-grid__item" [class.hive-grid__item--active]="employee.dialogOpen">
+    <img class="hive-grid__item__image" [src]="employee.picture" (click)="toggleDialog()" hiveClickOutside
+        (onClickOutside)="closeDialog()" />
+</div>
+
+<dialog class="hive-grid__item__dialog" [open]="employee.dialogOpen">
+    <h2>{{ employee.name }}</h2>
+    <p class="hive-grid__item__job-title">{{ employee.jobTitle }}</p>
+    <p>
+        <a href="mailto:{{ employee.email }}">{{ employee.email }}</a>
+    </p>
+    <p *ngIf="employee.phone">
+        <a href="tel:{{ employee.phone }}">{{ employee.phone }}</a>
+    </p>
+</dialog>
+
+<app-button *ngIf="employee.dialogOpen" class="hive-grid__item__button">
+    Get to know me!
+</app-button>
